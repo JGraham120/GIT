@@ -1,0 +1,53 @@
+MY_LOCAL_CFLAGS := -DANDROID -D_REENTRANT -DIVIS_PLATFORM_POSIX -DOS_LINUX -DIVIS_PROCESSOR_32BIT -D_INTTYPES_H_INCLUDED -DVOID=void -DOK=0 -DHAVE_SELECT -DERROR=-1 -D__OSA_ATOMIC_C__ -DHAVE_CPU_I386 -DOSA_CONFIG_SMP
+
+LOCAL_PATH := $(call my-dir)
+
+TARGET_PLATFORM := 'android-15'
+
+LS_CPP=$(subst $(1)/,,$(wildcard $(1)/$(2)/*.cpp))
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE    := cil7r32
+LOCAL_SRC_FILES := $(LOCAL_PATH)/../../../Nexiq_Rp1210/$(TARGET_ARCH_ABI)/libcil7r32.so
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../../../Nexiq_Rp1210/include
+include $(PREBUILT_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE    := nuln2r32
+LOCAL_SRC_FILES := $(LOCAL_PATH)/../../../Nexiq_Rp1210/$(TARGET_ARCH_ABI)/libnuln2r32.so
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../../../Nexiq_Rp1210/include
+include $(PREBUILT_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE    := nedl3r32
+LOCAL_SRC_FILES := $(LOCAL_PATH)/../../../Nexiq_Rp1210/$(TARGET_ARCH_ABI)/libnedl3r32.so
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../../../Nexiq_Rp1210/include
+include $(PREBUILT_SHARED_LIBRARY)
+
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE    := cimr32
+LOCAL_SRC_FILES := $(LOCAL_PATH)/../../../Nexiq_Rp1210/$(TARGET_ARCH_ABI)/libcimr32.so
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../../../Nexiq_Rp1210/include
+include $(PREBUILT_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE    := nblr32
+LOCAL_SRC_FILES := $(LOCAL_PATH)/../../../Nexiq_Rp1210/$(TARGET_ARCH_ABI)/libnblr32.so
+LOCAL_EXPORT_C_INCLUDES := $(LOCAL_PATH)/../../../Nexiq_Rp1210/include
+include $(PREBUILT_SHARED_LIBRARY)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE    := Rp1210TestLib
+LOCAL_SRC_FILES := Rp1210Test.cpp 
+LOCAL_CFLAGS := $(MY_LOCAL_CFLAGS)
+LOCAL_LDLIBS := -L$(SYSROOT)/usr/lib -llog -ldl 
+
+include $(BUILD_SHARED_LIBRARY)
+
